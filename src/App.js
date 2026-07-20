@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import { AuthProvider, useAuth } from './Context/AuthContext';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -10,14 +10,14 @@ import Student from './pages/Student';
 
 function Protected({ children }) {
   const { user, loading } = useAuth();
-  if (loading) return <div className="page-loader"><div className="sp"/><p style={{color:'#7F77DD',fontSize:14}}>Loading MarkIQ...</p></div>;
+  if (loading) return <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh'}}><p>Loading...</p></div>;
   if (!user) return <Navigate to="/login" replace/>;
   return children;
 }
 
 function Public({ children }) {
   const { user, loading } = useAuth();
-  if (loading) return <div className="page-loader"><div className="sp"/></div>;
+  if (loading) return <div style={{display:'flex',alignItems:'center',justifyContent:'center',height:'100vh'}}><p>Loading...</p></div>;
   if (user) return <Navigate to="/dashboard" replace/>;
   return children;
 }
