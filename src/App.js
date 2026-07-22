@@ -6,7 +6,6 @@ import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Create from './pages/Create';
 import Results from './pages/Results';
-import Student from './pages/Student';
 
 function Protected({ children }) {
   const { user, loading } = useAuth();
@@ -33,7 +32,6 @@ export default function App() {
           <Route path="/dashboard" element={<Protected><Dashboard/></Protected>}/>
           <Route path="/create" element={<Protected><Create/></Protected>}/>
           <Route path="/results/:id" element={<Protected><Results/></Protected>}/>
-          <Route path="/student" element={<Protected><Student/></Protected>}/>
           <Route path="*" element={<Navigate to="/" replace/>}/>
         </Routes>
       </BrowserRouter>
